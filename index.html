@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ultimate Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="start-screen" id="startScreen">
+    <h1>Ultimate Tic Tac Toe</h1>
+    <p>Select Game Mode:</p>
+    <select id="modeSelect">
+      <option value="2p">2 Players</option>
+      <option value="1p">Single Player (You vs Computer)</option>
+    </select>
+    <br /><br />
+    <button id="startBtn">Start Game</button>
+    <br /><br />
+    <button id="showRulesBtn">Show Rules</button>
+  </div>
+
+  <!-- Rules Modal -->
+  <div id="rulesModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Game Rules</h2>
+      <ul>
+        <li>Game has 9 small tic-tac-toe boards forming a larger board.</li>
+        <li>Win a small board by getting 3 of your marks in a row.</li>
+        <li>Your move determines where the opponent must play next.</li>
+        <li>If directed board is won or full, opponent may play anywhere.</li>
+        <li>Win the game by winning 3 small boards in a row on the large board.</li>
+      </ul>
+      <button id="closeRulesBtn">Close</button>
+    </div>
+  </div>
+
+  <div class="game-container hidden" id="gameContainer">
+    <h2 id="statusText">Turn: X</h2>
+    <div id="mainBoard" class="main-board"></div>
+    <button id="restartBtn" class="hidden">Restart</button>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
