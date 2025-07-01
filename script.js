@@ -11,13 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeRulesBtn = document.getElementById('closeRulesBtn');
   const rulesModal = document.getElementById('rulesModal');
 
-  showRulesBtn.onclick = () => {
-    rulesModal.classList.remove('hidden');
-  };
-
-  closeRulesBtn.onclick = () => {
-    rulesModal.classList.add('hidden');
-  };
+  showRulesBtn.onclick = () => rulesModal.classList.remove('hidden');
+  closeRulesBtn.onclick = () => rulesModal.classList.add('hidden');
 
   let currentPlayer = 'X';
   let gameMode = '2p';
@@ -33,11 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initGame();
   };
 
-  restartBtn.onclick = () => location.reload();
+  restartBtn.onclick = () => {
+    gameContainer.classList.add('hidden');
+    startScreen.classList.remove('hidden');
+  };
 
   function initGame() {
     boards = [];
-    boardWinners.fill(null);
+    boardWinners = Array(9).fill(null);
     gameOver = false;
     nextBoardIndex = null;
     currentPlayer = 'X';
@@ -121,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
         gameOver = true;
         statusText.textContent = `${b[a]} Wins the Game!`;
-        restartBtn.classList.remove('hidden');
         return true;
       }
     }
@@ -133,9 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
       statusText.textContent = xCount === oCount
         ? "It's a Draw!"
         : `${xCount > oCount ? 'X' : 'O'} Wins the Game!`;
-      restartBtn.classList.remove('hidden');
       return true;
     }
+
     return false;
   }
 
